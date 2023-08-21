@@ -5,8 +5,9 @@ namespace App\Livewire;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use App\Models\Track;
-use App\Jobs\ProcessTrack;
-
+use App\Jobs\DownloadTrack;
+use App\Jobs\StoreTrack;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Log;
 
 
@@ -20,10 +21,12 @@ class CreateTrack extends Component
     {
         $validated = $this->validate();
 
-
         $track = Track::create($validated);
 
-        ProcessTrack::dispatch($track);
+        Bus::chain([
+            new DownloadTrack($track),
+            new StoreTrack($track),
+        ])->dispatch();
 
         return $this->redirect('/');
     }
