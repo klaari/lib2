@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('tracks', function (Blueprint $table) {
             $table->id();
             $table->string('source_url');
-            $table->string('audio_url')->nullable();
-            $table->string('name')->nullable();
+            $table->string('url')->nullable();
+            $table->string('filename')->nullable();
+            $table->string('title')->nullable();
+            $table->string('artist')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });
