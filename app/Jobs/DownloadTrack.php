@@ -21,18 +21,13 @@ class DownloadTrack implements ShouldQueue
      */
     public function __construct(
         public Track $track,
-    ) {
-
-        Log::alert("DownloadTrack JOB constr!", [$this->track]);
-
-    }
+    ) {}
 
     /**
      * Execute the job.
      */
     public function handle(DownloadService $downloadService): void
     {
-        Log::alert("DownloadTrack JOB HANDLE!!!!", [$this->track]);
         $downloadService->download($this->track);
     }
 }
