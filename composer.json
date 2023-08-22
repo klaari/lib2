@@ -12,7 +12,8 @@
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^3.0@beta",
-        "norkunas/youtube-dl-php": "dev-master"
+        "norkunas/youtube-dl-php": "dev-master",
+        "spatie/laravel-failed-job-monitor": "^4.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
