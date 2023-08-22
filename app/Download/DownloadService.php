@@ -38,8 +38,7 @@ class DownloadService
 
         foreach ($collection->getVideos() as $video) {
             if ($video->getError() !== null) {
-                Log::error("Error downloading video: {$video->getError()}.");
-                return null;
+                throw new DownloadFailedException($video->getError());
             }
 
             $track->filename = $video->getFilename();
