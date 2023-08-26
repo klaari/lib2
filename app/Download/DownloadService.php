@@ -6,6 +6,7 @@ use YoutubeDl\Options;
 use YoutubeDl\YoutubeDl;
 use YoutubeDl\Entity\Video;
 use App\Models\Track;
+use App\Download\Exceptions\DownloadFailedException;
 use Illuminate\Support\Facades\Log;
 
 

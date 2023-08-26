@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Log;
 class CreateTrack extends Component
 {
     #[Rule('required|url')]
-    public $source_url = 'https://example.com';
+    public $source_url = '';
 
     public function save()
     {
