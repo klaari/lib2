@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Livewire\CreateTrack;
-use App\Livewire\Tracks;
 
 
 /*
@@ -17,6 +15,3 @@ use App\Livewire\Tracks;
 |
 */
 
-Route::get('/', CreateTrack::class);
-
-Route::get('/tracks', Tracks::class);
