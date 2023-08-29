@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('filename')->nullable();
             $table->string('title')->nullable();
             $table->string('artist')->nullable();
+            $table->integer('duration_in_seconds')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });

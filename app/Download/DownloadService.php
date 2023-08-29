@@ -8,6 +8,8 @@ use YoutubeDl\Entity\Video;
 use App\Models\Track;
 use App\Download\Exceptions\DownloadFailedException;
 use Illuminate\Support\Facades\Log;
+use FFMpeg\FFProbe;
+
 
 
 class DownloadService
@@ -26,6 +28,7 @@ class DownloadService
     {
         $yt = new YoutubeDl();
         $yt->setBinPath($this->ytdlBinPath);
+        $probe = FFProbe::create();
 
         $collection = $yt->download(
             Options::create()
@@ -42,9 +45,11 @@ class DownloadService
                 throw new DownloadFailedException($video->getError());
             }
 
+
             $track->filename = $video->getFilename();
             $track->description = $video->getDescription();
             $track->title = $video->getTitle();
+            $track->duration_in_seconds = (int) $probe->format($track->filename)->get('duration');
 
             $track->save();
 
