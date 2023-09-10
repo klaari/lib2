@@ -8,8 +8,10 @@
     </head>
     <body class="min-h-screen bg-gray-50 font-sans text-black antialiased">
         <div class="mx-auto max-w-2xl px-6 py-24">
+            @persist('logo')
+
             <a
-                href="/episodes"
+                href="/"
                 class="mx-auto flex max-w-max items-center gap-3 font-bold text-[#444] transition hover:opacity-80"
             >
                 <img
@@ -19,10 +21,13 @@
                 />
                 <span>Musik Lib</span>
             </a>
+            @endpersist
+
             <div class="py-10">{{ $slot }}</div>
 
+            @persist('player')
             <x-player />
-
+            @endpersist
         </div>
     </body>
 </html>
